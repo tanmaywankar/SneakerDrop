@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Cal Sans';
+  src: url('/fonts/CalSans.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Newake';
+  src: url('/fonts/Newake.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Regular.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Satoshi', sans-serif;
+  --font-satoshi: 'Satoshi', sans-serif;
+  --font-calsans: 'Cal Sans', sans-serif;
+  --font-cal: 'Cal Sans', sans-serif;
+  --font-newake: 'Newake', sans-serif;
+
+  --color-brand-volt: #D9FE00;
+  --color-brand-black: #111111;
+  --color-brand-gray-light: #F5F5F7;
+  --color-brand-gray-card: #EBEBEB;
+  --color-brand-gray-border: #D1D1D6;
+  --color-brand-gray-muted: #707072;
+}
+
+:root {
+  --bg-primary: #F5F5F7;
+  --color-volt: #D9FE00;
+  --color-black: #111111;
+  --color-border: #111111;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--color-black);
+  font-family: var(--font-satoshi);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
