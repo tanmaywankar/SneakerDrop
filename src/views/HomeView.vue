@@ -1,9 +1,23 @@
 <script setup>
+import { ref } from "vue";
 import Navbar from "../components/layout/Navbar.vue";
 import HeroSection from "../components/storefront/HeroSection.vue";
 import SneakerGrid from "../components/storefront/SneakerGrid.vue";
 import Footer from "../components/layout/Footer.vue";
 import WaitlistModal from "../components/storefront/WaitlistModal.vue";
+
+const selectedSneaker = ref(null);
+const isWaitlistOpen = ref(false);
+
+const handleOpenWaitlist = (sneaker) => {
+  selectedSneaker.value = sneaker;
+  isWaitlistOpen.value = true;
+};
+
+const handleCloseWaitlist = () => {
+  isWaitlistOpen.value = false;
+  selectedSneaker.value = null;
+};
 </script>
 
 <template>
