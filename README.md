@@ -2,7 +2,7 @@
 
 A fast, responsive sneaker showcase and drop platform I built for the Web Development practical assignment.
 
-The goal was to build a complete, cohesive web experience from scratch: a bold editorial storefront, a live relational database backing all dynamic products, an interactive early-access waitlist, and a fully secured admin management console to run it all.
+The goal was to build a basic but complete premium sneaker store with both frontend and backend, it needed to load its data in realtime from the backend server and feel premium. It also needed to have a full working admin panel with full CRUD features and a waitlist modal along with waitlist user table.
 
 ---
 
@@ -26,13 +26,13 @@ Behind the frontend, everything is wired to a real **Supabase (PostgreSQL)** bac
 ### Storefront & Landing Experience
 - **Editorial Hero Section**: Built with responsive art direction. On desktop, a right-anchored 16:9 hero image preserves its natural proportions with a seamless true-black (`#000000`) fade on wide viewports. On mobile, it switches to a vertical stack so the sneaker image is never cropped awkwardly.
 - **Custom Streetwear Typography**: Combined three distinct typefaces—`Newake` for punchy display headers, `Cal Sans` for geometric accents and labels, and `Satoshi` for readable body copy.
-- **Dynamic Product Grid**: Displays real drops queried live from Supabase (formatted in INR currency). Zero hardcoded mock arrays.
+- **Dynamic Product Grid**: Displays real drops queried live from Supabase. Zero hardcoded mock arrays.
 - **Neo-Brutalist Micro-Interactions**: Custom offset stroke hover effects and active click press states that feel tactile on both desktop and mobile touchscreens.
-- **Zero-Shift Skeleton Loaders**: Placeholder skeleton cards match the exact dimensions of loaded cards to prevent annoying Cumulative Layout Shift (CLS).
+- **Zero-Shift Skeleton Loaders**: Placeholder skeleton cards match the exact dimensions of loaded cards.
 
 ### Drop Waitlist System
 - **Early-Access Modal**: Visitors can click "Join Waitlist" on upcoming drops or "Notify" on sold-out drops.
-- **Form & Input Validation**: Validates emails natively via HTML5 and with client-side regex checks before dispatch.
+- **Form & Input Validation**: Validates emails natively via HTML5 and with client-side checks before dispatch.
 - **Database Duplicate Prevention**: Enforces a PostgreSQL composite unique constraint (`UNIQUE (sneaker_id, email)`). If someone tries submitting the same email twice for the same sneaker drop, the app intercepts error code `23505` and tells them they're already on the list.
 
 ### Protected Admin Console (`/admin`)
@@ -72,7 +72,6 @@ Behind the frontend, everything is wired to a real **Supabase (PostgreSQL)** bac
 | Layer | Choice | Why I Chose It |
 |---|---|---|
 | **Frontend Framework** | **Vue 3 (Composition API + `<script setup>`)** | Offers great reactivity without unnecessary boilerplate. Vue's SFC structure keeps template, styling, and script logic clean and readable. |
-| **Build Tool** | **Vite 8** | Near-instant cold starts and lightning-fast HMR during development, plus optimized Rollup production builds. |
 | **Styling** | **Tailwind CSS v4** | Utilized Tailwind's new `@theme` CSS variable tokens to cleanly define the brand color palette (`--color-brand-volt`, `--color-brand-black`, etc.) directly in CSS. |
 | **Database & Auth** | **Supabase (PostgreSQL)** | Combines a managed Postgres database, auth system, and Row Level Security (RLS) policies without having to maintain a dedicated server. |
 | **Routing** | **Vue Router 4** | Clean client-side SPA routing with auth navigation guards and route-level lazy loading for admin pages. |
@@ -83,7 +82,7 @@ Behind the frontend, everything is wired to a real **Supabase (PostgreSQL)** bac
 ## Architecture & Technical Decisions
 
 ### 1. Database-Enforced Security (RLS)
-Instead of relying only on client-side route guards (which can be bypassed by inspecting network requests), the database itself protects the data using PostgreSQL Row Level Security (RLS):
+Instead of relying only on client-side route guards (which can be bypassed by inspecting network requests), the supabase database itself protects the data using PostgreSQL Row Level Security (RLS):
 - Anyone (anonymous visitors) has `SELECT` permission on public sneakers and `INSERT` permission on the waitlist.
 - Only authenticated users (`to authenticated`) are granted permissions to `INSERT`, `UPDATE`, or `DELETE` sneakers, or `SELECT` waitlist subscribers.
 
@@ -167,7 +166,7 @@ values
 ## Setup & Local Development Instructions
 
 ### Prerequisites
-- Node.js (v18 or higher recommended)
+- Node.js
 - npm or pnpm
 - A Supabase account
 
@@ -206,11 +205,10 @@ npm run preview
 
 1. **Direct Image URL vs File Upload**: The admin drop form currently takes direct image URLs. In a future iteration, integrating Supabase Storage buckets directly with drag-and-drop file uploading and auto-compression would provide a better admin workflow.
 2. **Automated Email Dispatch**: Waitlist submissions are recorded with duplicate prevention and displayed in the admin console. Hooking this up to an automated email service (like Resend or Postmark) to send real transactional drop notifications would be the natural next step.
-3. **Cart Checkout**: The storefront focuses on showcase and waitlists; cart buttons currently provide visual feedback rather than routing into a complete payment gateway (e.g. Stripe/Razorpay).
+3. **Cart Checkout**: The storefront focuses on showcase and waitlists; cart buttons is currently completely abscent as a result even though the items themselves have add to cart buttons, which was a design choice I noticed in every premium website.
 
 ---
 
 ## Author
 
 **Tanmay Wankar**  
-- GitHub: [@tanmaywankar](https://github.com/tanmaywankar)  
