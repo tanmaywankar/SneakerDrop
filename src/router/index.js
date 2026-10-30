@@ -31,12 +31,18 @@ const router = createRouter({
 
 
 router.beforeEach(async (to, from, next) => {
-  if (to.meta.requiresAuth) {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) {
-      return next({ name: 'AdminLogin' })
-    }
+  const { data: { session } } = await supabase.auth.getSession()
+
+  // 1. Trying to access protected route without a session
+  if (to.meta.requiresAuth && !session) {
+    return next({ name: 'AdminLogin' })
   }
+
+  // 2. Already logged in and visiting login page
+  if (to.name === 'AdminLogin' && session) {
+    return next({ name: 'AdminDashboard' })
+  }
+
   next()
 })
 

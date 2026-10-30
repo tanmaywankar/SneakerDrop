@@ -61,7 +61,6 @@ const formatPrice = (price) => {
           </button>
         </div>
 
-        <!-- Upcoming -> Join Waitlist -->
         <div v-else-if="sneaker.status === 'UPCOMING'" class="relative inline-block group/btn cursor-pointer select-none">
           <div 
             class="absolute inset-0 translate-x-0 translate-y-0 opacity-0 group-hover/btn:opacity-100 group-hover/btn:translate-x-1.5 group-hover/btn:translate-y-1.5 border-2 border-brand-volt pointer-events-none transition-all duration-150 ease-out"

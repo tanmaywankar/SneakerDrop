@@ -52,7 +52,7 @@ const handleSubmit = async () => {
 
 <template>
   <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-    <div class="relative w-full max-w-md bg-white border-2 border-brand-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+    <div class="relative w-full max-w-md bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
       <!-- Close Button -->
       <button 
         @click="emit('close')" 
