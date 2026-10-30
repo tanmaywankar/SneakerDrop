@@ -2,8 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { supabase } from '../lib/supabase'
 
 import HomeView from '../views/HomeView.vue'
-import AdminLoginView from '../views/AdminLoginView.vue'
-import AdminDashboardView from '../views/AdminDashboardView.vue'
 
 const routes = [
   {
@@ -14,12 +12,12 @@ const routes = [
   {
     path: '/admin/login',
     name: 'AdminLogin',
-    component: AdminLoginView,
+    component: () => import('../views/AdminLoginView.vue'),
   },
   {
     path: '/admin',
     name: 'AdminDashboard',
-    component: AdminDashboardView,
+    component: () => import('../views/AdminDashboardView.vue'),
     meta: { requiresAuth: true },
   },
 ]
@@ -28,7 +26,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
-
 
 router.beforeEach(async (to, from, next) => {
   const { data: { session } } = await supabase.auth.getSession()
