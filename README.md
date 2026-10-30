@@ -209,6 +209,11 @@ npm run preview
 
 ---
 
+### Admin Demo Access
+- **Email**: `admin@sneakerdrop.internal`
+- **Password**: `SDAdmin4096`
+
+---
 ## Author
 
 **Tanmay Wankar**  
