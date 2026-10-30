@@ -47,11 +47,23 @@ Behind the frontend, everything is wired to a real **Supabase (PostgreSQL)** bac
 
 ## Screenshots
 
-| Storefront & Hero | Product Catalogue (1:1 Cards) |
+### Storefront Experience
+| Desktop Product Collection | Waitlist Modal |
 |:---:|:---:|
-| ![Storefront Hero](/public/images/HeroImage.webp) | ![Storefront Mobile](/public/images/HeroImageMobile.webp) |
+| ![Homepage Cards](/public/screenshots/HomepageCards.png) | ![Waitlist Modal](/public/screenshots/waitlistModal.png) |
 
-> *Tip: You can add full-page screenshots of your live dashboard and storefront inside `public/screenshots/` and link them here.*
+| Mobile Responsive Storefront | Mobile Product Cards |
+|:---:|:---:|
+| ![Android Admin & Nav](/public/screenshots/AndroidAdmin.png) | ![Android Cards](/public/screenshots/AndroidCards.png) |
+
+### Admin Management Console
+| Admin Login | Drops Management Table |
+|:---:|:---:|
+| ![Admin Login](/public/screenshots/AdminLogin.png) | ![Admin Drops Table](/public/screenshots/AdminCard.png) |
+
+| Waitlist Submissions Viewer |
+|:---:|
+| ![Admin Waitlist](/public/screenshots/AdminWaitlist.png) |
 
 ---
 
